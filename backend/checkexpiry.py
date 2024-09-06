@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 from twilio.rest import Client
 
 # Twilio credentials
-account_sid = 'AC988c3b66576f945d1db5002dde5cbd7a'  # Replace with your Account SID
-auth_token = '4dc3247370784c92798465a0a945a82f'    # Replace with your Auth Token
+account_sid = ''  # Replace with your Account SID
+auth_token = ''    # Replace with your Auth Token
 
 # Initialize the Twilio Client
 client = Client(account_sid, auth_token)
@@ -14,7 +14,7 @@ client = Client(account_sid, auth_token)
 # Function to send an email alert
 def email_alert(subject, body, to):
     user = "expiryyalert@gmail.com"
-    password = "pzjjaykmvoowsgzz"
+    password = "password"
 
     for recipient in to:
         msg = EmailMessage()
@@ -67,10 +67,10 @@ def checkexpiry():
         print(f"Failed to retrieve expiration dates: {e}")
         return
 
-    recipients = ['21eg105f23@anurag.edu.in', '21eg105f29@anurag.edu.in', '21eg105f33@anurag.edu.in']
-    phone_numbers = ['+919494188765']  # Replace with actual phone numbers
+    recipients = ['email1tosend', 'email2tosend', 'email3tosend']
+    phone_numbers = ['phonenumber']  # Replace with actual phone numbers
     alert_date = datetime.now() + timedelta(days=10)
-    from_phone_number = '+17723563620'  # Your Twilio phone number in E.164 format
+    from_phone_number = ''  # Your Twilio phone number in E.164 format
 
     for med in meds:
         expdate = datetime.strptime(med['expdate'], '%Y-%m-%d')
@@ -85,5 +85,5 @@ def checkexpiry():
                 send_sms(phone_number, from_phone_number, sms_body)
                 make_call(phone_number, from_phone_number, call_message)
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     checkexpiry()
